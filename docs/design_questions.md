@@ -143,6 +143,7 @@ Once a section is fully answered, summarise it in `docs/design_spec.md`.
 ## 9. MVP scope
 
 35. Of all the capabilities discussed above, which **three** are absolutely required for a useful MVP?
+    > **Answer:** 1) Define garden beds; 2) Visualize current state of the garden; 3) Support proposals/plans for landscaping changes.
 36. Which capabilities are explicitly out of scope for v1?
 37. What does "done" look like for the first working demo?
 
