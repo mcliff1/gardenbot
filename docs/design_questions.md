@@ -82,10 +82,19 @@ Once a section is fully answered, summarise it in `docs/design_spec.md`.
 ## 5. AI / Ollama integration
 
 20. Which Ollama model(s) do you plan to use? (llama3, mistral, gemma, etc.) Should the model be user-configurable?
+    > **Answer:** **User-configurable.** At minimum a vision-capable model must be supported (e.g. llava or a multimodal variant) because image input is a required use case.
+
 21. What specific tasks should Ollama handle? (plant suggestions, layout critique, care-schedule generation, natural language queries, all of the above?)
+    > **Answer:** **All of the above** — plant suggestions, layout critique, care-schedule generation, and natural language queries.
+
 22. Should the AI be able to explain its recommendations in plain English?
+    > **Answer:** **Yes.**
+
 23. What should happen when Ollama is not running or not installed — hard failure, graceful degradation, or a fallback mode?
+    > **Answer:** Ollama will be installed on a local server. The tool should also support an **optional cloud API fallback** (e.g. OpenAI / Anthropic) so the user can choose between local and cloud inference.
+
 24. Do you want to store conversation history per garden plan so the AI can remember prior context?
+    > **Answer:** Individual working-session transcripts do **not** need to be persisted. However, the overall garden **state/plan should be updated** after each AI interaction so that the AI has current context in future sessions.
 
 ---
 
