@@ -101,9 +101,16 @@ Once a section is fully answered, summarise it in `docs/design_spec.md`.
 ## 6. Data storage and persistence
 
 25. Where should data be stored? (local files — JSON/YAML/SQLite, or a hosted database?)
+    > **Answer:** Prefer a **Docker-based solution** for deployment; otherwise **JSON** files for local data storage.
+
 26. Should garden plans be exportable and importable (e.g., share a plan with someone else)?
+    > **Answer:** **Yes — bidirectional.** Export plans for implementation (e.g. hand off to a contractor). Import contractor bids to create or append to a **"proposal"** record on the plan.
+
 27. Do you need cloud backup or sync across devices?
+    > **Answer:** **No.** The tool is expected to be server-based; no cloud sync needed.
+
 28. Should the tool support version history for a garden plan (undo/redo, snapshots by date)?
+    > **Answer:** **Yes.**
 
 ---
 
