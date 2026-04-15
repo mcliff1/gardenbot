@@ -63,10 +63,19 @@ Once a section is fully answered, summarise it in `docs/design_spec.md`.
 ## 4. Multi-year visualization
 
 15. What does "visualize over the years" mean in practice — show predicted plant sizes, bloom colors, die-back, spreading, or all of the above?
+    > **Answer:** All of: **plant sizes, bloom times, die-back, and spreading** should be animated/shown across years.
+
 16. How far into the future should the default visualization project? (3 years, 5 years, custom?)
+    > **Answer:** **3 years** as the default projection window.
+
 17. Should the growth model be rule-based (hardcoded spread rates), AI-generated (Ollama inference), user-supplied, or a mix?
+    > **Answer:** Not sure yet. Recommendation: start with a **rule-based model** (hardcoded spread/growth rates per plant type stored in the plant database), with hooks for Ollama inference as an optional enhancement. User overrides should always be allowed.
+
 18. Should the user be able to annotate past years with what actually happened, so the tool can compare plan vs. reality?
+    > **Answer:** **Yes** — plan vs. reality comparison is a desired feature.
+
 19. Does seasonal variation within a year matter? (spring bloom vs. summer peak vs. fall die-back)
+    > **Answer:** **Yes, this is important.** The visualization should show seasonal states within each year (at minimum: spring / summer / fall).
 
 ---
 
