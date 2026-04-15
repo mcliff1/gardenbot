@@ -117,8 +117,13 @@ Once a section is fully answered, summarise it in `docs/design_spec.md`.
 ## 7. Lawn management (beyond flower beds)
 
 29. What lawn-specific features are in scope for v1? (mowing schedule, fertiliser calendar, watering reminders, weed tracking, pest/disease logging?)
+    > **Answer:** **Yes — include the suggested features:** mowing schedule, fertiliser calendar, watering reminders, weed tracking, and pest/disease logging.
+
 30. Should the tool integrate with weather data (local forecasts, historical frost dates, USDA hardiness zone)?
+    > **Answer:** **Future enhancement** — not in scope for v1.
+
 31. Should it support irrigation system management or just manual watering notes?
+    > **Answer:** Drip lines are expected to be in place physically, but **no integration with the irrigation system** — manual watering notes only.
 
 ---
 
