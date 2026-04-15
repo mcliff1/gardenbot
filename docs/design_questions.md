@@ -9,9 +9,16 @@ Once a section is fully answered, summarise it in `docs/design_spec.md`.
 ## 1. Users and personas
 
 1. Who are the primary users of gardenbot? (homeowner, professional landscaper, hobbyist, etc.)
+   > **Answer:** Homeowner. The tool's output (plans, visualizations, schedules) is handed off to a professional landscaper for implementation.
+
 2. What is the assumed technical skill level of the user when running the tool?
+   > **Answer:** Comfortable in a terminal. A UI option is also desired for quick visualization.
+
 3. Will there be multiple users / profiles on a single installation, or is it always a single-user tool?
+   > **Answer:** Start with a single user. Design should allow expansion to multiple users/profiles later.
+
 4. Does the user need to manage multiple separate properties/gardens, or just one?
+   > **Answer:** Start with a single property. May extend to multiple properties later; separate properties are independent (no relationship between them required).
 
 ---
 
