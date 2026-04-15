@@ -154,9 +154,16 @@ Once a section is fully answered, summarise it in `docs/design_spec.md`.
 ## 10. Non-functional requirements
 
 38. Target OS / platform? (Linux, macOS, Windows, or cross-platform?)
+    > **Answer:** Primary target is **Ubuntu Server with Docker**. Future hosting on AWS or GCP is possible; the application should be cloud-portable.
+
 39. Any performance constraints? (max response time for AI queries, max beds/plants before it gets slow?)
+    > **Answer:** AI inference runs against a **local Ollama instance running 8 B-parameter models**. Cloud API key support must also be available as an alternative. No hard latency SLA for v1, but the architecture should make it easy to swap inference backends.
+
 40. Should the tool be packaged for easy install (pip, Docker, standalone binary)?
+    > **Answer:** Both **pip** (Python package) and **Docker** (containerised deployment).
+
 41. Are there any privacy requirements — should plant or location data ever leave the local machine?
+    > **Answer:** **No special privacy requirements.** Garden/location data is not considered sensitive.
 
 ---
 
