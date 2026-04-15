@@ -44,10 +44,19 @@ Once a section is fully answered, summarise it in `docs/design_spec.md`.
 ## 3. Garden data model
 
 10. What information do you want to track per flower bed? (name, location/coordinates, shape, soil type, sun exposure, irrigation zone, notes…)
+    > **Answer:** Track: name, location/coordinates, shape, sun exposure, notes. **No need for soil type or irrigation zone.** Scope extends beyond flower beds — the full-yard view should include trees, bushes, hardscape (patio, shed), and utilities so the visualization shows the entire property.
+
 11. What information do you want to track per plant? (common name, botanical name, perennial/annual, bloom time, mature size, color, companion plants, care notes…)
+    > **Answer:** Yes — track all of the above: common name, botanical name, perennial/annual, bloom time, mature size, color, companion plants, and care notes.
+
 12. Should the tool come with a built-in plant database, let the user build one, or query an external source?
+    > **Answer:** Open to recommendation. Clarification of options: (a) **built-in curated database** shipped with the app (no internet needed, works offline); (b) **user-built** — user enters every plant manually; (c) **external API** (e.g., Trefle, USDA PLANTS) queried at runtime. Recommended approach: ship a **small built-in starter database** of common plants, with the ability for the user to add custom entries; external API can be added later.
+
 13. How many layout templates should ship with the MVP? Do you have specific shapes in mind (rectangle, crescent, island, raised bed, etc.)?
+    > **Answer:** MVP needs: **two freeform/irregular areas adjacent to the house** (foundation beds) and **two rectangular areas** elsewhere in the yard. Templates: rectangle + freeform polygon are sufficient for v1.
+
 14. How should beds be positioned relative to one another — free-form placement or a grid-aligned plot map?
+    > **Answer:** Not sure yet. Recommendation: use a **scaled canvas with free-form placement** (drag/drop on the interactive HTML view), which is more natural for an irregular yard than a strict grid. A grid overlay can be offered as an optional snap-to-grid aid.
 
 ---
 
