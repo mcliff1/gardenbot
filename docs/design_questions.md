@@ -25,10 +25,19 @@ Once a section is fully answered, summarise it in `docs/design_spec.md`.
 ## 2. Interface and interaction
 
 5. What is the primary interface? (CLI, web UI, desktop GUI, chat-based REPL, or a combination?)
+   > **Answer:** Web-based UI is the default (deployed on an Ubuntu server with Docker + DNS/SSL). CLI is an optional secondary interface.
+
 6. If CLI: should it be an interactive session or a command-per-invocation tool?
+   > **Answer:** Interactive session (REPL-style).
+
 7. If a web or desktop UI: what framework are you open to? (Flask/FastAPI + React, Streamlit, Tkinter, etc.)
+   > **Answer:** Open to suggestions; lots of general coding experience but limited front-end experience. Recommendation: **FastAPI backend + HTMX or a lightweight JS framework** (avoids heavy React complexity while staying web-native). Streamlit is an alternative if rapid prototyping is prioritised.
+
 8. Should the AI assistant (Ollama) feel like a chat companion, or should it be invoked only on specific commands?
+   > **Answer:** Invoked on demand (specific commands/actions). A chat/conversation mode is a nice-to-have but not the default.
+
 9. What should the output of a "flower bed visualization" look like — ASCII art in a terminal, a rendered image file, an interactive HTML page, or something else?
+   > **Answer:** Interactive HTML page (rendered in the web UI).
 
 ---
 
