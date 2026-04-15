@@ -147,6 +147,7 @@ Once a section is fully answered, summarise it in `docs/design_spec.md`.
 36. Which capabilities are explicitly out of scope for v1?
     > **Answer:** Out of scope for v1: user logins/authentication, dynamic plant growth simulation. Static layouts are acceptable — no need to animate or model real-time changes.
 37. What does "done" look like for the first working demo?
+    > **Answer:** "Done" means: (1) a user can define their current garden layout; (2) the user can create multiple proposals representing changes to that layout; (3) the user can visualize any layout or proposal.
 
 ---
 
