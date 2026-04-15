@@ -145,6 +145,7 @@ Once a section is fully answered, summarise it in `docs/design_spec.md`.
 35. Of all the capabilities discussed above, which **three** are absolutely required for a useful MVP?
     > **Answer:** 1) Define garden beds; 2) Visualize current state of the garden; 3) Support proposals/plans for landscaping changes.
 36. Which capabilities are explicitly out of scope for v1?
+    > **Answer:** Out of scope for v1: user logins/authentication, dynamic plant growth simulation. Static layouts are acceptable — no need to animate or model real-time changes.
 37. What does "done" look like for the first working demo?
 
 ---
