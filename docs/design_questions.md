@@ -130,8 +130,13 @@ Once a section is fully answered, summarise it in `docs/design_spec.md`.
 ## 8. Notifications and scheduling
 
 32. Should gardenbot generate a weekly/monthly care schedule or task list?
+    > **Answer:** **Yes.**
+
 33. How should reminders be delivered — in-app, email, push notification, or just a printed checklist?
+    > **Answer:** **In-app to start.**
+
 34. Should tasks be tied to calendar dates or to growth stages?
+    > **Answer:** **As needed** — support both calendar-date and growth-stage-based tasks as appropriate.
 
 ---
 
