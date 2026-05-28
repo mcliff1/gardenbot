@@ -1,0 +1,2 @@
+# This directory stores yard and plant data as JSON files.
+# It is created empty; gardenbot populates it at runtime.

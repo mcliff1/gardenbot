@@ -43,6 +43,8 @@ Once a section is fully answered, summarise it in `docs/design_spec.md`.
 
 ## 3. Garden data model
 
+> ✅ **Resolved** — full data schema (yard → areas → plantings, structures, coordinate system) documented in `docs/design_spec.md` §3.
+
 10. What information do you want to track per flower bed? (name, location/coordinates, shape, soil type, sun exposure, irrigation zone, notes…)
     > **Answer:** Track: name, location/coordinates, shape, sun exposure, notes. **No need for soil type or irrigation zone.** Scope extends beyond flower beds — the full-yard view should include trees, bushes, hardscape (patio, shed), and utilities so the visualization shows the entire property.
 
