@@ -2,34 +2,79 @@
 
 An AI-assisted system for landscaping and gardening.
 
-## Initial system specifications
+## Quick start
 
-### Goals
-- Manage lawn and garden planning in one place.
-- Start with requirements and a clear MVP scope.
+### Local development
 
-### Technical direction
-- Primary language: **Python**.
-- Local AI runtime: **Ollama** (for planning and recommendation workflows).
+```bash
+# Clone and install
+git clone https://github.com/mcliff1/gardenbot.git
+cd gardenbot
+pip install -e ".[dev]"
 
-### Core capability (first feature)
-- Let the user select a flower bed layout template.
-- Visualize that layout over multiple years to show how the bed evolves over time.
+# Run the dev server
+gardenbot
+# → http://localhost:8000
+```
 
-### MVP notes
-- Inputs should include layout choice, plant list, and start year.
-- Outputs should include year-by-year bed views and simple growth assumptions.
+### Docker
 
-## Design process
+```bash
+docker compose up --build
+# → http://localhost:8000
+# Ollama available at http://localhost:11434
+```
 
-Before implementation begins, we are working through a structured set of design questions.
+### Run tests
+
+```bash
+pytest
+```
+
+### Lint
+
+```bash
+ruff check src/ tests/
+```
+
+## Project structure
+
+```
+src/gardenbot/
+├── main.py              # FastAPI app entry point
+├── models/              # Pydantic data models
+│   └── yard.py          # Yard, Area, Structure, Proposal models
+├── routers/             # API route handlers
+│   ├── yards.py         # Yard/area/structure CRUD
+│   ├── plants.py        # Plant database
+│   ├── proposals.py     # Proposal lifecycle
+│   └── ai.py            # Ollama / AI integration
+└── services/            # Business logic (future)
+
+tests/                   # Test suite
+static/                  # JS/CSS assets (Fabric.js, etc.)
+templates/               # Jinja2 HTML templates
+data/                    # JSON data files (runtime)
+docs/                    # Design documentation
+```
+
+## Design documentation
 
 | Document | Purpose |
 |----------|---------|
-| [`docs/design_questions.md`](docs/design_questions.md) | Open questions to answer before writing code |
-| `docs/design_spec.md` | *(future)* Final design spec, populated as questions are answered |
+| [`docs/design_questions.md`](docs/design_questions.md) | Design questions and answers |
+| [`docs/design_spec.md`](docs/design_spec.md) | Final design specification |
 
-## Agent context
+## Configuration
 
-A Copilot coding-agent context file lives at [`.github/agents/gardenbot.md`](.github/agents/gardenbot.md).
-It provides coding conventions, domain vocabulary, and instructions the agent should follow in every session.
+Copy `.env.example` to `.env` and edit as needed:
+
+```bash
+cp .env.example .env
+```
+
+Key settings:
+- `GARDENBOT_DATA_DIR` — where JSON data files are stored
+- `OLLAMA_BASE_URL` — Ollama server URL
+- `OLLAMA_MODEL` — default model name
+- `OPENAI_API_KEY` / `ANTHROPIC_API_KEY` — optional cloud AI fallback
