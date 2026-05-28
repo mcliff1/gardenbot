@@ -1,8 +1,8 @@
 """Gardenbot FastAPI application."""
 
+from pathlib import Path
+
 from fastapi import FastAPI
-from fastapi.staticfiles import StaticFiles
-from fastapi.templating import Jinja2Templates
 
 from gardenbot.routers import ai, plants, proposals, yards
 
@@ -12,9 +12,12 @@ app = FastAPI(
     version="0.1.0",
 )
 
-# Static files and templates
-app.mount("/static", StaticFiles(directory="static"), name="static")
-templates = Jinja2Templates(directory="templates")
+# Static files and templates (only mount if directories exist)
+_static_dir = Path("static")
+if _static_dir.is_dir():
+    from fastapi.staticfiles import StaticFiles
+
+    app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # Register routers
 app.include_router(yards.router, prefix="/yards", tags=["yards"])
