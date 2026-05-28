@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Gardenbot – AI Assistant{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>AI Assistant</h1>
+    <span class="badge" id="ai-status">Checking connection...</span>
+</div>
+
+<div class="ai-container">
+    <div class="ai-chat">
+        <div id="chat-messages" class="chat-messages">
+            <div class="message assistant">
+                <p>Hello! I can help you with plant suggestions, layout critique, care schedules, and general gardening questions. What would you like help with?</p>
+            </div>
+        </div>
+        <form id="ai-form" onsubmit="sendQuery(event)" class="chat-input">
+            <input type="text" id="ai-input" placeholder="Ask about plants, layouts, care schedules..." required>
+            <button type="submit" class="btn btn-primary" id="ai-submit">Send</button>
+        </form>
+    </div>
+
+    <div class="ai-sidebar">
+        <h3>Quick Actions</h3>
+        <button class="btn btn-block" onclick="quickAction('suggest plants')">🌸 Suggest Plants</button>
+        <button class="btn btn-block" onclick="quickAction('critique layout')">📐 Critique Layout</button>
+        <button class="btn btn-block" onclick="quickAction('care schedule')">📅 Care Schedule</button>
+        <button class="btn btn-block" onclick="quickAction('companion planting')">🌱 Companion Planting</button>
+
+        <h3>Settings</h3>
+        <div class="form-group">
+            <label for="ai-model">Model</label>
+            <input type="text" id="ai-model" value="{{ ollama_model }}" readonly class="input-readonly">
+        </div>
+        <div class="form-group">
+            <label for="ai-server">Server</label>
+            <input type="text" id="ai-server" value="{{ ollama_url }}" readonly class="input-readonly">
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/ai.js"></script>
+{% endblock %}

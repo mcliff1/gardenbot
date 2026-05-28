@@ -4,10 +4,10 @@ WORKDIR /app
 
 # Install dependencies
 COPY pyproject.toml .
+COPY src/ src/
 RUN pip install --no-cache-dir .
 
-# Copy application code
-COPY src/ src/
+# Copy frontend assets
 COPY static/ static/
 COPY templates/ templates/
 COPY data/ data/
