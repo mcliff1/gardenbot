@@ -59,4 +59,3 @@ async def ai_query(body: AIQuery):
         return {"error": f"Cannot connect to Ollama at {settings.ollama_base_url}"}
     except httpx.TimeoutException:
         return {"error": "AI request timed out"}
-

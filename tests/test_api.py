@@ -7,16 +7,22 @@ from httpx import ASGITransport, AsyncClient
 
 # Reusable test boundaries
 BOUNDARY_100x80 = [
-    {"x": 0, "y": 0}, {"x": 100, "y": 0},
-    {"x": 100, "y": 80}, {"x": 0, "y": 80},
+    {"x": 0, "y": 0},
+    {"x": 100, "y": 0},
+    {"x": 100, "y": 80},
+    {"x": 0, "y": 80},
 ]
 BOUNDARY_50x50 = [
-    {"x": 0, "y": 0}, {"x": 50, "y": 0},
-    {"x": 50, "y": 50}, {"x": 0, "y": 50},
+    {"x": 0, "y": 0},
+    {"x": 50, "y": 0},
+    {"x": 50, "y": 50},
+    {"x": 0, "y": 50},
 ]
 BOUNDARY_60x40 = [
-    {"x": 0, "y": 0}, {"x": 60, "y": 0},
-    {"x": 60, "y": 40}, {"x": 0, "y": 40},
+    {"x": 0, "y": 0},
+    {"x": 60, "y": 0},
+    {"x": 60, "y": 40},
+    {"x": 0, "y": 40},
 ]
 
 
@@ -178,8 +184,10 @@ async def test_structure_crud(client):
             "name": "House",
             "type": "house",
             "footprint": [
-                {"x": 10, "y": 10}, {"x": 40, "y": 10},
-                {"x": 40, "y": 35}, {"x": 10, "y": 35},
+                {"x": 10, "y": 10},
+                {"x": 40, "y": 10},
+                {"x": 40, "y": 35},
+                {"x": 10, "y": 35},
             ],
         },
     )
@@ -272,8 +280,10 @@ async def test_proposal_lifecycle(client):
                         "name": "Back Patio",
                         "type": "patio",
                         "shape": [
-                            {"x": 30, "y": 20}, {"x": 55, "y": 20},
-                            {"x": 55, "y": 35}, {"x": 30, "y": 35},
+                            {"x": 30, "y": 20},
+                            {"x": 55, "y": 20},
+                            {"x": 55, "y": 35},
+                            {"x": 30, "y": 35},
                         ],
                     },
                     "notes": "12x15 flagstone patio",
@@ -355,11 +365,7 @@ async def test_proposal_render(client):
     # Add change to remove the area
     resp = await client.put(
         f"/yards/{yard_id}/proposals/{proposal_id}",
-        json={
-            "changes": [
-                {"action": "remove", "target_type": "area", "target_id": area_id}
-            ]
-        },
+        json={"changes": [{"action": "remove", "target_type": "area", "target_id": area_id}]},
     )
     assert resp.status_code == 200
 
