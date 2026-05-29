@@ -266,9 +266,7 @@ async def get_planting(yard_id: str, area_id: str, planting_id: str):
 
 
 @router.put("/{yard_id}/areas/{area_id}/plantings/{planting_id}")
-async def update_planting(
-    yard_id: str, area_id: str, planting_id: str, body: PlantingUpdate
-):
+async def update_planting(yard_id: str, area_id: str, planting_id: str, body: PlantingUpdate):
     """Update a planting."""
     yard = _get_yard_or_404(yard_id)
     area = _get_area_or_404(yard, area_id)

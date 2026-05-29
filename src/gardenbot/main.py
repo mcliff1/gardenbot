@@ -3,8 +3,9 @@
 from pathlib import Path
 
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
 
-from gardenbot.routers import ai, plants, proposals, yards
+from gardenbot.routers import ai, plants, proposals, web, yards
 
 app = FastAPI(
     title="Gardenbot",
@@ -12,24 +13,28 @@ app = FastAPI(
     version="0.1.0",
 )
 
-# Static files and templates (only mount if directories exist)
-_static_dir = Path("static")
+# Static files — resolve relative to project root
+_project_root = Path(__file__).resolve().parent.parent.parent
+_static_dir = _project_root / "static"
 if _static_dir.is_dir():
-    from fastapi.staticfiles import StaticFiles
+    app.mount("/static", StaticFiles(directory=str(_static_dir)), name="static")
 
-    app.mount("/static", StaticFiles(directory="static"), name="static")
-
-# Register routers
+# Register API routers
 app.include_router(yards.router, prefix="/yards", tags=["yards"])
 app.include_router(plants.router, prefix="/plants", tags=["plants"])
 app.include_router(proposals.router, prefix="/yards/{yard_id}/proposals", tags=["proposals"])
 app.include_router(ai.router, prefix="/ai", tags=["ai"])
 
+# Register web UI router
+app.include_router(web.router, prefix="/ui", tags=["web"])
+
 
 @app.get("/")
 async def root():
-    """Health check / landing page."""
-    return {"status": "ok", "app": "gardenbot", "version": "0.1.0"}
+    """Redirect to web UI dashboard."""
+    from fastapi.responses import RedirectResponse
+
+    return RedirectResponse(url="/ui/")
 
 
 def cli():

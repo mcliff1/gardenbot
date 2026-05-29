@@ -101,9 +101,7 @@ def _load_plants() -> list[Plant]:
 def _save_plants(plants: list[Plant]) -> None:
     """Save plants to the plants file."""
     _ensure_dirs()
-    PLANTS_FILE.write_text(
-        json.dumps([p.model_dump() for p in plants], indent=2)
-    )
+    PLANTS_FILE.write_text(json.dumps([p.model_dump() for p in plants], indent=2))
 
 
 def list_plants() -> list[Plant]:
@@ -136,9 +134,7 @@ def search_plants(query: str) -> list[Plant]:
     """Search plants by common or botanical name."""
     q = query.lower()
     return [
-        p
-        for p in _load_plants()
-        if q in p.common_name.lower() or q in p.botanical_name.lower()
+        p for p in _load_plants() if q in p.common_name.lower() or q in p.botanical_name.lower()
     ]
 
 
