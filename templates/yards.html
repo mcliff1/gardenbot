@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}Gardenbot – Yards{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Yards</h1>
+    <button class="btn btn-primary" onclick="showCreateForm()">+ New Yard</button>
+</div>
+
+<!-- Create yard form (hidden by default) -->
+<div id="create-form" class="card form-card" style="display: none;">
+    <h3>Create New Yard</h3>
+    <form id="yard-form" onsubmit="createYard(event)">
+        <div class="form-group">
+            <label for="yard-name">Name</label>
+            <input type="text" id="yard-name" name="name" required placeholder="e.g. My Backyard">
+        </div>
+        <div class="form-group">
+            <label for="yard-origin">Origin Description</label>
+            <input type="text" id="yard-origin" name="origin_description" placeholder="e.g. NW corner of property">
+        </div>
+        <div class="form-group">
+            <label for="yard-width">Width (feet)</label>
+            <input type="number" id="yard-width" name="width" step="0.5" value="100" required>
+        </div>
+        <div class="form-group">
+            <label for="yard-depth">Depth (feet)</label>
+            <input type="number" id="yard-depth" name="depth" step="0.5" value="80" required>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Create</button>
+            <button type="button" class="btn" onclick="hideCreateForm()">Cancel</button>
+        </div>
+    </form>
+</div>
+
+<!-- Yard list -->
+<div id="yard-list" class="card-list">
+    <p class="loading">Loading yards...</p>
+</div>
+
+<!-- Yard detail / canvas view -->
+<div id="yard-detail" style="display: none;">
+    <div class="page-header">
+        <h2 id="yard-detail-name"></h2>
+        <button class="btn" onclick="closeDetail()">← Back to list</button>
+    </div>
+    <div class="yard-info">
+        <span id="yard-detail-origin" class="badge"></span>
+        <span id="yard-detail-areas" class="badge"></span>
+        <span id="yard-detail-structures" class="badge"></span>
+    </div>
+    <div class="canvas-container">
+        <canvas id="yard-canvas" width="800" height="600"></canvas>
+    </div>
+    <div class="yard-panels">
+        <div class="panel">
+            <h3>Areas</h3>
+            <div id="areas-list"></div>
+        </div>
+        <div class="panel">
+            <h3>Structures</h3>
+            <div id="structures-list"></div>
+        </div>
+        <div class="panel">
+            <h3>Proposals</h3>
+            <div id="proposals-list"></div>
+            <button class="btn btn-sm" onclick="createProposal()">+ New Proposal</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/yards.js"></script>
+{% endblock %}

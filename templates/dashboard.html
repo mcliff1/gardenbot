@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Gardenbot – Dashboard{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <h1>Welcome to Gardenbot</h1>
+    <p>AI-assisted landscaping and garden planning</p>
+</section>
+
+<section class="dashboard-grid">
+    <div class="card">
+        <h2>🏡 Yards</h2>
+        <p id="yard-count">Loading...</p>
+        <a href="/ui/yards" class="btn">Manage Yards</a>
+    </div>
+    <div class="card">
+        <h2>🌿 Plants</h2>
+        <p id="plant-count">Loading...</p>
+        <a href="/ui/plants" class="btn">Plant Database</a>
+    </div>
+    <div class="card">
+        <h2>🤖 AI Assistant</h2>
+        <p>Get suggestions, critique layouts, and generate care schedules.</p>
+        <a href="/ui/ai" class="btn">Ask AI</a>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Load counts on page load
+    fetch('/yards/').then(r => r.json()).then(data => {
+        document.getElementById('yard-count').textContent = data.length + ' yard(s) defined';
+    }).catch(() => {
+        document.getElementById('yard-count').textContent = 'Unable to load';
+    });
+    fetch('/plants/').then(r => r.json()).then(data => {
+        document.getElementById('plant-count').textContent = data.length + ' plant(s) in database';
+    }).catch(() => {
+        document.getElementById('plant-count').textContent = 'Unable to load';
+    });
+</script>
+{% endblock %}

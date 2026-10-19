@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}Gardenbot – Plants{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Plant Database</h1>
+    <button class="btn btn-primary" onclick="showCreatePlant()">+ Add Plant</button>
+</div>
+
+<!-- Search -->
+<div class="search-bar">
+    <input type="text" id="plant-search" placeholder="Search plants..." oninput="searchPlants(this.value)">
+</div>
+
+<!-- Create plant form -->
+<div id="create-plant-form" class="card form-card" style="display: none;">
+    <h3>Add New Plant</h3>
+    <form id="plant-form" onsubmit="createPlant(event)">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="plant-common">Common Name</label>
+                <input type="text" id="plant-common" name="common_name" required>
+            </div>
+            <div class="form-group">
+                <label for="plant-botanical">Botanical Name</label>
+                <input type="text" id="plant-botanical" name="botanical_name">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="plant-type">Type</label>
+                <select id="plant-type" name="perennial">
+                    <option value="true">Perennial</option>
+                    <option value="false">Annual</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="plant-bloom">Bloom Time</label>
+                <input type="text" id="plant-bloom" name="bloom_time" placeholder="e.g. mid-summer">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="plant-size">Mature Size (ft diameter)</label>
+                <input type="number" id="plant-size" name="mature_size_ft" step="0.5">
+            </div>
+            <div class="form-group">
+                <label for="plant-color">Color</label>
+                <input type="text" id="plant-color" name="color" placeholder="e.g. purple">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="plant-care">Care Notes</label>
+            <textarea id="plant-care" name="care_notes" rows="3"></textarea>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Add Plant</button>
+            <button type="button" class="btn" onclick="hideCreatePlant()">Cancel</button>
+        </div>
+    </form>
+</div>
+
+<!-- Plant list -->
+<div id="plant-list" class="card-list">
+    <p class="loading">Loading plants...</p>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/plants.js"></script>
+{% endblock %}
